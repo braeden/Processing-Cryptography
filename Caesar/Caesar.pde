@@ -1,7 +1,13 @@
-//Caesar Encoder
 surface.setVisible(false);
+
+boolean encode = true;
 String input = "Hello this is a Caesar Cipher!";
-int shift = 0;
+int shift = 4;
+int oldshift = shift;
+if (!encode) {
+  int tempshift = shift % 26;
+  shift = 26 - tempshift;
+}
 char modified;
 String encoded = "";
 for(int i = 0; i < input.length(); i++) {
@@ -26,5 +32,10 @@ for(int i = 0; i < input.length(); i++) {
   encoded = encoded + str(input.charAt(i));
  }
 }
-println("Encoded with shift of " + shift + ":");
-println(encoded);
+if (!encode) {
+  println("Decoded with shift of " + oldshift + ":");
+  println(encoded);
+} else {
+  println("Encoded with shift of " + shift + ":");
+  println(encoded);
+}
