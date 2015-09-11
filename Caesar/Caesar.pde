@@ -16,15 +16,15 @@ for(int i = 0; i < input.length(); i++) {
  if (Character.isUpperCase(currentChar)) { //Uppercase
   if (int(currentChar) + tempShift > 90) { //If the current char and the tempShift are greater than 'Z'
     tempShift -= 90-int(currentChar); //Loop around
-    modified = char(64+tempShift);
+    modified = char(64+tempShift);  //'a' unicode -1 for offset
   } else {
     modified = char(currentChar + tempShift);
   }
   encoded = encoded + str(modified); //Append to string
- } else if (Character.isLowerCase(currentChar)) {
-  if (int(currentChar) + tempShift > 122) { //Lowercase
-    tempShift -= 122-int(currentChar); //If the current char and the tempShift are greater than 'z'
-    modified = char(96+tempShift); //Loop around
+ } else if (Character.isLowerCase(currentChar)) { //Lowercase
+  if (int(currentChar) + tempShift > 122) { //If the current char and the tempShift are greater than 'z'
+    tempShift -= 122-int(currentChar); //Loop around 
+    modified = char(96+tempShift); //'a' unicode -1 for offset
   } else {
     modified = char(currentChar + tempShift);
   }
