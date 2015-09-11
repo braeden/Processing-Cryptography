@@ -16,7 +16,7 @@ for(int i = 0; i < input.length(); i++) {
  if (Character.isUpperCase(currentChar)) { //Uppercase
   if (int(currentChar) + tempShift > 90) { //If the current char and the tempShift are greater than 'Z'
     tempShift -= 90-int(currentChar); //Loop around
-    modified = char(64+tempShift);  //'a' unicode -1 for offset
+    modified = char(64+tempShift);  //'A' unicode -1 for offset
   } else {
     modified = char(currentChar + tempShift);
   }
