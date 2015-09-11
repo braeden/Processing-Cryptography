@@ -11,25 +11,26 @@ if (!encode) {
 char modified; //The modified char for each iteration
 String encoded = "";
 for(int i = 0; i < input.length(); i++) {
+ char currentChar = input.charAt(i);
  int tempshift = shift % 26; //Reset tempshift for each loop
- if (Character.isUpperCase(input.charAt(i))) { //Uppercase
-  if (int(input.charAt(i)) + tempshift > 90) { //If the current char and the tempshift are greater than 'Z'
-    tempshift -= 90-int(input.charAt(i)); //Loop around
+ if (Character.isUpperCase(currentChar)) { //Uppercase
+  if (int(currentChar) + tempshift > 90) { //If the current char and the tempshift are greater than 'Z'
+    tempshift -= 90-int(currentChar); //Loop around
     modified = char(65+tempshift-1);
   } else {
-    modified = char(input.charAt(i) + tempshift);
+    modified = char(currentChar + tempshift);
   }
   encoded = encoded + str(modified); //Append to string
- } else if (Character.isLowerCase(input.charAt(i))) {
-  if (int(input.charAt(i)) + tempshift > 122) { //Lowercase
-    tempshift -= 122-int(input.charAt(i)); //If the current char and the tempshift are greater than 'z'
+ } else if (Character.isLowerCase(currentChar)) {
+  if (int(currentChar) + tempshift > 122) { //Lowercase
+    tempshift -= 122-int(currentChar); //If the current char and the tempshift are greater than 'z'
     modified = char(97+tempshift-1); //Loop around
   } else {
-    modified = char(input.charAt(i) + tempshift);
+    modified = char(currentChar + tempshift);
   }
   encoded = encoded + str(modified); //Append to string
  } else {
-  encoded = encoded + str(input.charAt(i)); //Append normally if not a letter
+  encoded = encoded + str(currentChar); //Append normally if not a letter
  }
 }
 if (!encode) { //Decode return
