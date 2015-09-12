@@ -1,4 +1,5 @@
 surface.setVisible(false);
+
 boolean encode = true; //Encode/decode switch
 String input = "Hello this is not a Caesar Cipher!";
 String phrase = "Secret";
@@ -19,7 +20,6 @@ for(int i = 0; i < input.length(); i++) {
    tempShift = 26 - (int(secretChar) - 65); //Decode is the same except you have to subtract from 26 to make opposite
  }
  //Below is old code from Caesar
- 
  if (Character.isUpperCase(currentChar)) { //Uppercase
   if (int(currentChar) + tempShift > 90) { //If the current char and the tempShift are greater than 'Z'
     tempShift -= 90-int(currentChar); //Loop around
@@ -28,7 +28,7 @@ for(int i = 0; i < input.length(); i++) {
     modified = char(currentChar + tempShift);
   }
   encoded = encoded + str(modified); //Append to string
-  j++;
+  j++; //Since it is a char, make sure secretChar (the phrase string keeps advancing)
  } else if (Character.isLowerCase(currentChar)) { //Lowercase
   if (int(currentChar) + tempShift > 122) { //If the current char and the tempShift are greater than 'z'
     tempShift -= 122-int(currentChar); //Loop around 
