@@ -1,7 +1,7 @@
 void console() {
   boolean encode = true;
   puts("Caesar Cipher");
-  puts("Enter '1' to encode OR '2' to decode OR exit:");
+  puts("Enter '1' to encode OR '2' to decode OR 'exit':");
   String choice = gets();
   if (choice.equals("1")) {
     encode = true;
@@ -54,11 +54,29 @@ void caesar(String input, boolean encode, int shift) {
    }
   }
   if (!encode) { //Decode return
+    puts("");
+    puts("Type 'exit' to leave OR CTRL + C  to copy text OR anything else to start again");
+    puts("");
     puts("Decoded with shift of " + oldShift + ":");
     puts(encoded);
+    if (gets().toLowerCase().equals("exit")) {
+      exit();
+    } else {
+      cls();
+      console();
+    }
   } else { //Encode return
+    puts("");
+    puts("Type 'exit' to leave OR CTRL + C  to copy text OR anything else to start again");
+    puts("");
     puts("Encoded with shift of " + shift + ":");
     puts(encoded);
+    if (gets().toLowerCase().equals("exit")) {
+      exit();
+    } else {
+      cls();
+      console();
+    }
   }
 }
 
