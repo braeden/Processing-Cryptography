@@ -1,24 +1,25 @@
 surface.setVisible(false);
-
-boolean encode = false; //Encode/decode switch
-String input = "Zincs mzmu zw ggx c Texket Tmizit!";
+boolean encode = true; //Encode/decode switch
+String input = "Hello this is not a Caesar Cipher!";
 String phrase = "Secret";
-phrase = phrase.toUpperCase();
+phrase = phrase.replaceAll("[^a-zA-Z]", "").toUpperCase(); //Remove all non letter and capitalize
 char modified; //The modified char for each iteration
 String encoded = "";
 int tempShift;
 int j = 0;
 for(int i = 0; i < input.length(); i++) {
  char currentChar = input.charAt(i);
- if (j > phrase.length()-1) {
+ if (j > phrase.length()-1) { //Cause the sercet phrase to loop around if input is larger than phrase
    j = 0;
  }
- char secretChar = phrase.charAt(j); 
+ char secretChar = phrase.charAt(j); //Defining the character of phrase
  if (encode) {
-   tempShift = int(secretChar) - 65;
+   tempShift = int(secretChar) - 65; //Rest of code is same, pass in the shift, but different for the phrase each time
  } else {
-   tempShift = 26 - (int(secretChar) - 65);
+   tempShift = 26 - (int(secretChar) - 65); //Decode is the same except you have to subtract from 26 to make opposite
  }
+ //Below is old code from Caesar
+ 
  if (Character.isUpperCase(currentChar)) { //Uppercase
   if (int(currentChar) + tempShift > 90) { //If the current char and the tempShift are greater than 'Z'
     tempShift -= 90-int(currentChar); //Loop around
