@@ -6,7 +6,7 @@ void console() {
   if (choice.equals("1")) {
     encode = true;
     puts("Encode:");
-  } else if (choice.equals("1")) {
+  } else if (choice.equals("2")) {
     encode = false;
     puts("Decode:");
   } else if (choice.toLowerCase().equals("exit")) {
