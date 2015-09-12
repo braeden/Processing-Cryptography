@@ -11,8 +11,8 @@ void console() {
     encode = false;
     puts("Decode:");
   } else if (choice.toLowerCase().equals("exit")) {
-    exit();
     puts("Exiting");
+    exit();
   } else {
     cls();
     puts("Please enter a valid input");
