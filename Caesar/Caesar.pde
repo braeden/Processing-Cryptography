@@ -27,6 +27,7 @@ void console() {
     intShift = Integer.parseInt(shift);
   }
   catch (NumberFormatException e) { //Catch bad input exception and restart function
+    puts("");
     puts("Please enter a valid interger to shift");
     console();
   }
