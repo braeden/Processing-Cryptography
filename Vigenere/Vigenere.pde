@@ -1,7 +1,7 @@
 surface.setVisible(false);
 
-boolean encode = true; //Encode/decode switch
-String input = "Hello this is not a Caesar Cipher!";
+boolean encode = false; //Encode/decode switch
+String input = "Zincs mzmu zw ggx c Texket Tmizit!";
 String phrase = "Secret";
 phrase = phrase.toUpperCase();
 char modified; //The modified char for each iteration
@@ -14,7 +14,11 @@ for(int i = 0; i < input.length(); i++) {
    j = 0;
  }
  char secretChar = phrase.charAt(j); 
- tempShift = int(secretChar) - 65;
+ if (encode) {
+   tempShift = int(secretChar) - 65;
+ } else {
+   tempShift = 26 - (int(secretChar) - 65);
+ }
  if (Character.isUpperCase(currentChar)) { //Uppercase
   if (int(currentChar) + tempShift > 90) { //If the current char and the tempShift are greater than 'Z'
     tempShift -= 90-int(currentChar); //Loop around
@@ -38,9 +42,9 @@ for(int i = 0; i < input.length(); i++) {
  }
 }
 if (!encode) { //Decode return
- // println("Decoded with shift of " + oldShift + ":");
+  println("Decoded with cipher text of '" + phrase + "' :");
   println(encoded);
 } else { //Encode return
-  //println("Encoded with shift of " + shift + ":");
+  println("Encoded with cipher text of '" + phrase + "' :");
   println(encoded);
 }
