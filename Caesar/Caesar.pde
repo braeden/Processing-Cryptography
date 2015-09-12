@@ -1,5 +1,6 @@
 void console() {
   boolean encode = true;
+  int intShift = 0;
   puts("Caesar Cipher");
   puts("Enter '1' to encode OR '2' to decode OR 'exit':");
   String choice = gets();
@@ -20,7 +21,16 @@ void console() {
   }
   puts("Please enter sentence:");
   String input = gets();
-  caesar(input, encode, 4); //Call Function
+  puts("Please enter a shift amount");
+  String shift = gets();
+  try {
+    intShift = Integer.parseInt(shift);
+  }
+  catch (NumberFormatException e) { //Catch bad input exception and restart function
+    puts("Please enter a valid interger to shift");
+    console();
+  }
+  caesar(input, encode, intShift); //Call Function
 }
 void caesar(String input, boolean encode, int shift) {
   int oldShift = shift; //Old shift for decode return
