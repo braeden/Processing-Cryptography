@@ -32,7 +32,7 @@ void vigenere(String input, boolean encode, String phrase) {
   String encoded = "";
   int tempShift;
   int j = 0;
-  
+  String keyPhrase = "";
   for(int i = 0; i < input.length(); i++) {
     
    char currentChar = input.charAt(i);
@@ -55,6 +55,7 @@ void vigenere(String input, boolean encode, String phrase) {
       modified = char(currentChar + tempShift);
     }
     encoded = encoded + str(modified); //Append to string
+    keyPhrase += secretChar; //Add to the secret phrase character string to display at end
     j++; //Since it is a char, make sure secretChar (the phrase string keeps advancing)
    } else if (Character.isLowerCase(currentChar)) { //Lowercase
     if (int(currentChar) + tempShift > 122) { //If the current char and the tempShift are greater than 'z'
@@ -64,16 +65,23 @@ void vigenere(String input, boolean encode, String phrase) {
       modified = char(currentChar + tempShift);
     }
     encoded = encoded + str(modified); //Append to string
+    keyPhrase += secretChar;
     j++;
    } else {
     encoded = encoded + str(currentChar); //Append normally if not a letter
+    keyPhrase += " "; //Append space to secret chacrater string because the currentChar is not a letter
    }
  }
   if (!encode) { //Decode return
     puts("");
-    puts("Type 'exit' to leave OR CTRL + C  to copy text OR anything else to start again");
+    puts("Type 'exit' to leave OR CTRL + C  to copy text OR anything else to restart");
     puts("");
     puts("Decoded with a chipher text of '" + phrase + "' :");
+    puts("");
+    puts("Plaintext : " + input);
+    puts("Keyphrase : " + keyPhrase);
+    puts("Ciphertext: " + encoded);
+    puts("");
     puts(encoded);
     if (gets().toLowerCase().equals("exit")) {
       exit();
@@ -82,10 +90,18 @@ void vigenere(String input, boolean encode, String phrase) {
       console();
     }
   } else { //Encode return
+    cls();
     puts("");
-    puts("Type 'exit' to leave OR CTRL + C  to copy text OR anything else to start again");
+    puts("Type 'exit' to leave OR CTRL + C  to copy text OR anything else to restart");
     puts("");
     puts("Encoded with cipher text of '" + phrase + "' :");
+    puts("");
+    puts("Decoded with a chipher text of '" + phrase + "' :");
+    puts("");
+    puts("Plaintext : " + input);
+    puts("Keyphrase : " + keyPhrase);
+    puts("Ciphertext: " + encoded);
+    puts("");
     puts(encoded);
     if (gets().toLowerCase().equals("exit")) {
       exit();
@@ -343,7 +359,9 @@ void draw() {
   
   if (copied) {
     textAlign(CENTER);
+    textSize(50);
     text("Copied", width/2, height/2);
+    textSize(20);
   }
   if (copiedPopup + 500 < millis()) {      
     copied = false;
