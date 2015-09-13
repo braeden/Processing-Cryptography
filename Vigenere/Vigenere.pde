@@ -73,6 +73,7 @@ void vigenere(String input, boolean encode, String phrase) {
    }
  }
   if (!encode) { //Decode return
+    cls();
     puts("");
     puts("Type 'exit' to leave OR CTRL + C  to copy text OR anything else to restart");
     puts("");
