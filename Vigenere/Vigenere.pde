@@ -97,8 +97,6 @@ void vigenere(String input, boolean encode, String phrase) {
     puts("");
     puts("Encoded with cipher text of '" + phrase + "' :");
     puts("");
-    puts("Decoded with a chipher text of '" + phrase + "' :");
-    puts("");
     puts("Plaintext : " + input);
     puts("Keyphrase : " + keyPhrase);
     puts("Ciphertext: " + encoded);
