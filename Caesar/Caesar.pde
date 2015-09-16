@@ -31,10 +31,10 @@ void console() {
     puts("Please enter a valid interger to shift");
     console();
   }
-  caesar(input, encode, intShift); //Call Function
+  String encodedString = caesar(input, encode, intShift);//Call Function to encrypt/decrypt
+  consoleOutput(encodedString, intShift, encode); //Call console output function
 }
-void caesar(String input, boolean encode, int shift) {
-  int oldShift = shift; //Old shift for decode return
+String caesar(String input, boolean encode, int shift) {
   if (!encode) {
     int tempShift = shift % 26; //Divide by 26 and find remainder with modulus to decode
     shift = 26 - tempShift; //Decode is the same as encode expect the shift is subtracted from 26
@@ -64,11 +64,14 @@ void caesar(String input, boolean encode, int shift) {
     encoded = encoded + str(currentChar); //Append normally if not a letter
    }
   }
+  return(encoded);
+}
+void consoleOutput(String encoded, int shift, boolean encode) {
   if (!encode) { //Decode return
     puts("");
     puts("Type 'exit' to leave OR CTRL + C  to copy text OR anything else to start again");
     puts("");
-    puts("Decoded with shift of " + oldShift + ":");
+    puts("Decoded with shift of " + shift + ":");
     puts(encoded);
     if (gets().toLowerCase().equals("exit")) {
       exit();
@@ -90,7 +93,6 @@ void caesar(String input, boolean encode, int shift) {
     }
   }
 }
-
 
 
 
