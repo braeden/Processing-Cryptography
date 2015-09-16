@@ -23,10 +23,13 @@ void console() {
   puts("Please enter a cipher phrase");
   String phrase = gets();
   
-  vigenere(input, encode, phrase); //Call Function
+  String[] arrReturn = vigenere(input, encode, phrase); //Call Function
+  String encoded = arrReturn[0]; //Fetch the encoded phrase out of return
+  String keyPhrase = arrReturn[1]; //Fetch the keyphrase
+  consoleOutput(encoded, keyPhrase, encode, phrase, input); 
 }
 
-void vigenere(String input, boolean encode, String phrase) {
+String[] vigenere(String input, boolean encode, String phrase) {
   phrase = phrase.replaceAll("[^a-zA-Z]", "").toUpperCase(); //Remove all non letter and capitalize
   char modified; //The modified char for each iteration
   String encoded = "";
@@ -72,6 +75,10 @@ void vigenere(String input, boolean encode, String phrase) {
     keyPhrase += " "; //Append space to secret chacrater string because the currentChar is not a letter
    }
  }
+ String[] arrReturn = {encoded, keyPhrase}; //Put data in array to return and pass into consoleOutput()
+ return(arrReturn);
+} 
+void consoleOutput(String encoded, String keyPhrase, boolean encode, String phrase, String input) {
   if (!encode) { //Decode return
     cls();
     puts("");
