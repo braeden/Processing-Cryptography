@@ -1,6 +1,6 @@
 void console() {
   boolean encode = true;
-  puts("Vigernere Cipher");
+  puts("Vigenere Cipher");
   puts("Enter '1' to encode OR '2' to decode OR 'exit':");
   String choice = gets();
   if (choice.equals("1")) {
